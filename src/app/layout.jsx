@@ -21,9 +21,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        
+        <Script 
+           src="https://telegram.org/js/telegram-web-app.js"
+           strategy="beforeInteractive" 
+          />
+          {children}
 
-        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+        
       </body>
     </html>
   );

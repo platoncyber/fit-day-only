@@ -14,16 +14,22 @@ export default function Home() {
      'Пей достаточно воды, минимум сладких напитков.'
   ];
 
-  useEffect(()=>{
-    const tg = window.Telegram.WebApp;
-    const user = tg.initDataUnsafe.user;
+   useEffect( () => {
+    const tg = window.Telegram && window.Telegram.WebApp
+    if (!tg) return;
+    const userData = tg.initDataUnsafe.user;
+    tg.ready()
+    const user = tg.initDataUnsafe && tg.initDataUnsafe.user
+    console.log(user)
 
+
+
+    tg.ready()
     tg.expand();
     if(userData){
       setUser(userData)
     }
-  })
-
+  },[])
   return (
     <div className={styles.page}>
       <main className={styles.main}>
